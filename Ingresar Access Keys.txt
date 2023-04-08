@@ -12,4 +12,10 @@ Abre el archivo HumanoMaquina_accessKeys.csv y copia los códigos, uno para el u
 En Default Region Name: eu-east-1
 En Default Output format dejalo vacío y dale enter.
 
-Ya con esto te debe dejar ejecutar los .ipynb
+Ya con esto te debe dejar ejecutar los .ipynb y los .py
+
+###########################################################
+
+Para probar que funcione, primero ejecuta el CapturarRostros.py (con este te toma las fotos y las guarda), y luego prueba el main.py
+
+Los .ipynb son la misma chingadera jaja
