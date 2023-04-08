@@ -19,7 +19,7 @@ while True:
 	faces = faceClassif.detectMultiScale(gray, 1.3, 5)
 
 	k = cv2.waitKey(1)
-	if k == 0:
+	if k == 27:     ## PRESIONA LA TECLA ESC PARA SALIR DE LA CÁMARA
 		break
 
 	for (x,y,w,h) in faces:

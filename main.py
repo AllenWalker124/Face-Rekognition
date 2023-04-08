@@ -82,7 +82,7 @@ def main():
     # rutas[][2] == Segunda foto
     
     # img1 = rutas[0][1]
-    img1 = './Rostros encontrados/rostro_0.jpg'
+    img1 = './Rostros encontrados/rostro_1.jpg'
     
     for i in range(len(rutas)):
         for j in range(1,3):
