@@ -1,0 +1,12 @@
+Para usar Rekognition de AWS primero descarga el aws shell:
+    pip install aws-shell
+
+despues ingresa el comando:
+    aws configure
+
+Abre el archivo HumanoMaquina_accessKeys.csv y copia los códigos, uno para el usuario y el otro es la contraseña.
+
+En Default Region Name: eu-east-1
+En Default Output format dejalo vacío y dale enter.
+
+Ya con esto te debe dejar ejecutar los .ipynb
