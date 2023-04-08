@@ -1,3 +1,6 @@
+Descarga Boto3:
+    pip install boto3
+
 Para usar Rekognition de AWS primero descarga el aws shell:
     pip install aws-shell
 
