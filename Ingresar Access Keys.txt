@@ -19,3 +19,8 @@ Ya con esto te debe dejar ejecutar los .ipynb y los .py
 Para probar que funcione, primero ejecuta el CapturarRostros.py (con este te toma las fotos y las guarda), y luego prueba el main.py
 
 Los .ipynb son la misma chingadera jaja
+
+###########################################################
+
+Edit: Ahora todo está en el CodigoCompleto.py
+Solo hay que ejecutar ese para probarlo
