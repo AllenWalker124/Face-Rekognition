@@ -24,11 +24,11 @@ Si se da el caso en el que después de instalar el aws shell no te deja ejecutar
 
 ###########################################################
 
-Para probar que funcione, primero ejecuta el CapturarRostros.py (con este te toma las fotos y las guarda), y luego prueba el main.py
+Para probar que funcione, primero ejecuta el CapturarRostros.py (con este te toma las fotos y las guarda), y luego prueba el CompararRostros.py
 
 Los .ipynb son la misma chingadera jaja
 
 ###########################################################
 
-EDIT: Ahora todo está en el CodigoCompleto.py
+EDIT: Ahora todo está en el main.py
 Solo hay que ejecutar ese para probarlo
