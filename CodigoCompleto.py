@@ -89,7 +89,7 @@ def capturarFotos():
                 cv2.imshow('rostro',rostro)
                 count = count +1
         cv2.rectangle(frame,(10,5),(450,25),(255,255,255),-1)
-        cv2.putText(frame,'Presione s, para almacenar los rostros encontrados',(10,20), 2, 0.5,(128,0,255),1,cv2.LINE_AA)
+        cv2.putText(frame,'Presione s para almacenar los rostros encontrados y presione ESC para cerrar la cámara.',(10,20), 2, 0.5,(128,0,255),1,cv2.LINE_AA)
         cv2.imshow('frame',frame)
 
     cap.release()
