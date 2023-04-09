@@ -1,5 +1,8 @@
-Descarga Boto3:
-    pip install boto3
+Librerías utilizadas:
+    - Open-CV:  pip install opencv-python
+    - Json
+    - OS
+    - Boto3:  pip install boto3
 
 Para usar Rekognition de AWS primero descarga el aws shell:
     pip install aws-shell
@@ -9,10 +12,15 @@ despues ingresa el comando:
 
 Abre el archivo HumanoMaquina_accessKeys.csv y copia los códigos, uno para el usuario y el otro es la contraseña.
 
-En Default Region Name: eu-east-1
-En Default Output format dejalo vacío y dale enter.
+    - Usuario:   AKIAZS3C6ZPLUK626GU5
+    - Clave:   J0dUgCPj+sqspC/n5mqqtKjJgeGgqVUh5ie5yXPx
+    - En Default Region Name:   eu-east-1
+    - En Default Output format dejalo vacío y dale enter.
 
 Ya con esto te debe dejar ejecutar los .ipynb y los .py
+
+Si se da el caso en el que después de instalar el aws shell no te deja ejecutar los .ipynb y te marca un error del prompt, ejecuta el siguiente comando:
+    pip install --upgrade prompt-toolkit
 
 ###########################################################
 
@@ -22,5 +30,5 @@ Los .ipynb son la misma chingadera jaja
 
 ###########################################################
 
-Edit: Ahora todo está en el CodigoCompleto.py
+EDIT: Ahora todo está en el CodigoCompleto.py
 Solo hay que ejecutar ese para probarlo

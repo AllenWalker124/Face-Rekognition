@@ -1,0 +1,34 @@
+{
+    "Datos Usuarios": [
+      {
+        "tutor_1": "Jesus",
+        "foto_1": "./Rostros Personas/Jesus_before.jpg",
+        "foto_2": "./Rostros Personas/Jesus_after.jpg",
+        "hijo_1": "Jesus hijo 1"
+      },
+      {
+        "tutor_1": "Miguel",
+        "foto_1": "./Rostros Personas/Miguel_before.jpg",
+        "foto_2": "./Rostros Personas/Miguel_after.jpg",
+        "hijo_1": "Miguel hijo 1"
+      },
+      {
+        "tutor_1": "Karla",
+        "foto_1": "./Rostros Personas/Karla_before.jpg",
+        "foto_2": "./Rostros Personas/Karla_after.jpg",
+        "hijo_1": "Karla hijo 1"
+      },
+      {
+        "tutor_1": "Jared",
+        "foto_1": "./Rostros Personas/Jared_before.jpg",
+        "foto_2": "./Rostros Personas/Jared_after.jpg",
+        "hijo_1": "Jared hijo 1"
+      },
+      {
+        "tutor_1": "Raul",
+        "foto_1": "./Rostros Personas/Raul_before.jpg",
+        "foto_2": "./Rostros Personas/Raul_after.jpg",
+        "hijo_1": "Raul hijo 1"
+      }
+    ]
+  }

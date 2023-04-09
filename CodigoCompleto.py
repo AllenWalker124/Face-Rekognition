@@ -2,16 +2,22 @@ import cv2
 import os
 import boto3
 from botocore.exceptions import ClientError
-
-# FUNCIONES PARA LA COMPARACIÓN DE ROSTROS
+import json2dic
 
 # Diccionario con imagenes
-rutas = {0 : ['Jesus', './Rostros Personas/Jesus_before.jpg', './Rostros Personas/Jesus_after.jpg'],
-         1 : ['Miguel', './Rostros Personas/Miguel_before.jpg', './Rostros Personas/Miguel_after.jpg'],
-         2 : ['Karla', './Rostros Personas/Karla_before.jpg', './Rostros Personas/Karla_after.jpg'],
-         3 : ['Jared', './Rostros Personas/Jared_before.jpg', './Rostros Personas/Jared_after.jpg'],
-         4 : ['Raul', './Rostros Personas/Raul_before.jpg', './Rostros Personas/Raul_after.jpg']
-         }
+
+# rutas = {0 : ['Jesus', './Rostros Personas/Jesus_before.jpg', './Rostros Personas/Jesus_after.jpg', 'Jesus hijo 1'],
+#          1 : ['Miguel', './Rostros Personas/Miguel_before.jpg', './Rostros Personas/Miguel_after.jpg', 'Miguel hijo 1'],
+#          2 : ['Karla', './Rostros Personas/Karla_before.jpg', './Rostros Personas/Karla_after.jpg', 'Karla hijo 1'],
+#          3 : ['Jared', './Rostros Personas/Jared_before.jpg', './Rostros Personas/Jared_after.jpg', 'Jared hijo 1'],
+#          4 : ['Raul', './Rostros Personas/Raul_before.jpg', './Rostros Personas/Raul_after.jpg', 'Raul hijo 1']
+#          }
+
+json_path = './JSON/datos_usuarios.json'
+rutas = json2dic.convertirJson2Dic(json_path)
+
+
+# FUNCIONES PARA LA COMPARACIÓN DE ROSTROS
 
 def obtener_bytes_imagen(ruta_imagen):
     with open(ruta_imagen, "rb") as imagen:
@@ -28,7 +34,7 @@ def compararRostros(ruta_imagen1,ruta_imagen2):
                                           SimilarityThreshold = 60,
                                           QualityFilter = 'NONE')
         
-        #QUALITY FILTER: NONE'|'AUTO'|'LOW'|'MEDIUM'|'HIGH'
+        ### QUALITY FILTER: NONE'|'AUTO'|'LOW'|'MEDIUM'|'HIGH'
 
     except ClientError as error:
         print("Ocurrio un error al llamar a la API:",error)
@@ -101,13 +107,13 @@ if __name__ == "__main__":
     crearCarpetaFotos()
     capturarFotos()
     
-    img1 = './Rostros encontrados/rostro_0.jpg'
+    ruta_img1 = './Rostros encontrados/rostro_0.jpg'
         
     for i in range(len(rutas)):
         for j in range(1,3):
-            img2 = rutas[i][j]
+            ruta_img2 = rutas[i][j]
             
             print('Comparado con: ' + rutas[i][0])
-            compararRostros(img1, img2)
+            compararRostros(ruta_img1, ruta_img2)
             
-            print('\n')
+            # print('\n')
