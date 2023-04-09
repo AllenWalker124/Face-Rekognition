@@ -95,7 +95,7 @@ def capturarFotos():
     cap.release()
     cv2.destroyAllWindows()
 
-# COMPARAMOS LA FOTOGRAFÍA GUARDADA CON LAS IMÁGENES GUARDADAS EN LA BD
+# COMPARAMOS LA PRIMERA FOTOGRAFÍA GUARDADA CON LAS IMÁGENES GUARDADAS EN LA BD
 
 if __name__ == "__main__":
     crearCarpetaFotos()
