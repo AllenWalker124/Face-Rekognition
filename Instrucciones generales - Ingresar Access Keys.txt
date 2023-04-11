@@ -14,7 +14,7 @@ Abre el archivo HumanoMaquina_accessKeys.csv y copia los códigos, uno para el u
 
     - Usuario:   AKIAZS3C6ZPLUK626GU5
     - Clave:   J0dUgCPj+sqspC/n5mqqtKjJgeGgqVUh5ie5yXPx
-    - En Default Region Name:   eu-east-1
+    - En Default Region Name:   us-east-1
     - En Default Output format dejalo vacío y dale enter.
 
 Ya con esto te debe dejar ejecutar los .ipynb y los .py
