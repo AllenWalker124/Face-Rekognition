@@ -5,14 +5,6 @@ from botocore.exceptions import ClientError
 import json2dic
 
 # Diccionario con imagenes
-
-# rutas = {0 : ['Jesus', './Rostros Personas/Jesus_before.jpg', './Rostros Personas/Jesus_after.jpg', 'Jesus hijo 1'],
-#          1 : ['Miguel', './Rostros Personas/Miguel_before.jpg', './Rostros Personas/Miguel_after.jpg', 'Miguel hijo 1'],
-#          2 : ['Karla', './Rostros Personas/Karla_before.jpg', './Rostros Personas/Karla_after.jpg', 'Karla hijo 1'],
-#          3 : ['Jared', './Rostros Personas/Jared_before.jpg', './Rostros Personas/Jared_after.jpg', 'Jared hijo 1'],
-#          4 : ['Raul', './Rostros Personas/Raul_before.jpg', './Rostros Personas/Raul_after.jpg', 'Raul hijo 1']
-#          }
-
 json_path = './JSON/datos_usuarios.json'
 rutas = json2dic.convertirJson2Dic(json_path)
 
@@ -52,14 +44,6 @@ def compararRostros(ruta_imagen1,ruta_imagen2):
 
         # FaceMatches
         for i in respuesta['FaceMatches']:
-            # FACE
-            # print('BoundingBoxWidth: ',i['Face']['BoundingBox']['Width'])
-            # print('BoundingBoxHeight: ',i['Face']['BoundingBox']['Height'])
-
-            # QUALITY
-            # print('QualityBrightness: ',i['Face']['Quality']['Brightness'])
-            # print('QualitySharpness: ',i['Face']['Quality']['Sharpness'])
-            
             # SIMILARITY
             # print('Similarity: ', i['Similarity'])
             similarity = float(i['Similarity'])
@@ -103,12 +87,13 @@ def capturarFotos():
                 cv2.imwrite('Rostros encontrados/rostro_{}.jpg'.format(count),rostro)
                 cv2.imshow('rostro',rostro)
                 count = count +1
-        cv2.rectangle(frame,(10,5),(450,25),(255,255,255),-1)
-        cv2.putText(frame,'Presione s para almacenar los rostros encontrados y presione ESC para cerrar la cámara.',(10,20), 2, 0.5,(128,0,255),1,cv2.LINE_AA)
+        cv2.rectangle(frame,(10,5),(600,25),(255,255,255),-1)
+        cv2.putText(frame,'Presione S para almacenar los rostros encontrados y ESC para cerrar.',(10,20), 2, 0.5,(128,0,255),1,cv2.LINE_AA)
         cv2.imshow('frame',frame)
 
     cap.release()
     cv2.destroyAllWindows()
+    
 
 # COMPARAMOS LA PRIMERA FOTOGRAFÍA GUARDADA CON LAS IMÁGENES GUARDADAS EN LA BD
 
