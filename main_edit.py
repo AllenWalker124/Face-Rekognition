@@ -97,18 +97,33 @@ def capturarFotos():
 
 # COMPARAMOS LA PRIMERA FOTOGRAFÍA GUARDADA CON LAS IMÁGENES GUARDADAS EN LA BD
 
-if __name__ == "__main__":
+def actualizacionStatus():
     crearCarpetaFotos()
     capturarFotos()
     
     ruta_img1 = './Rostros encontrados/rostro_0.jpg'
-        
+    
+    # Esta lista guardará la información del alumno siempre y cuando se haya reconocido al padre
+    status = []
+    
     for i in range(len(rutas)):
         
-        ruta_img2 = rutas[i][1]
+        ruta_img2 = rutas[i][3]
         similaridad, person_found = compararRostros(ruta_img1, ruta_img2)
         
         if person_found == True:
-            print('Se encontró parentesco con: ' + rutas[i][0])
-            print('Similarity: ', similaridad)
-            print('Hijo de la persona registrada: ' + rutas[i][3] + '\n')
+            # print('Se encontró parentesco con: ' + rutas[i][0])
+            # print('Similarity: ', similaridad)
+            # print('Hijo de la persona registrada: ' + rutas[i][3] + '\n')
+            
+            for h in range(len(rutas[i][5])):
+                status.append([rutas[i][5][h], rutas[i][6][h], rutas[i][7][h], "Llegó padre"])  # Nombre hijo(s), Edad, Grupo
+    
+    return status
+
+if __name__ == "__main__":
+    
+    permisoAlumnos = actualizacionStatus()      # Lista de alumnos que tienen permitido salir
+    # Puede que un padre tenga varios hijos registrados, por eso sale una lista con los datos de cada uno
+    for i in range(len(permisoAlumnos)):
+        print("Alumno: ", permisoAlumnos[i][0], "\tEdad: ", permisoAlumnos[i][1], "\tGrupo: ", permisoAlumnos[i][2], "\tEstado: ", permisoAlumnos[i][3], "\n")
