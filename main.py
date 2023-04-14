@@ -5,17 +5,11 @@ from botocore.exceptions import ClientError
 import json2dic
 
 # Diccionario con imagenes
-
-# rutas = {0 : ['Jesus', './Rostros Personas/Jesus_before.jpg', './Rostros Personas/Jesus_after.jpg', 'Jesus hijo 1'],
-#          1 : ['Miguel', './Rostros Personas/Miguel_before.jpg', './Rostros Personas/Miguel_after.jpg', 'Miguel hijo 1'],
-#          2 : ['Karla', './Rostros Personas/Karla_before.jpg', './Rostros Personas/Karla_after.jpg', 'Karla hijo 1'],
-#          3 : ['Jared', './Rostros Personas/Jared_before.jpg', './Rostros Personas/Jared_after.jpg', 'Jared hijo 1'],
-#          4 : ['Raul', './Rostros Personas/Raul_before.jpg', './Rostros Personas/Raul_after.jpg', 'Raul hijo 1']
-#          }
-
 json_path = './JSON/datos_usuarios.json'
 rutas = json2dic.convertirJson2Dic(json_path)
 
+CON_THRES = 95
+SIM_THRES = 95
 
 # FUNCIONES PARA LA COMPARACIÓN DE ROSTROS
 
@@ -38,28 +32,24 @@ def compararRostros(ruta_imagen1,ruta_imagen2):
 
     except ClientError as error:
         print("Ocurrio un error al llamar a la API:",error)
-
+    
     if respuesta and respuesta.get('ResponseMetadata').get('HTTPStatusCode') == 200:
-        # UnmatchedFaces
-        for i in respuesta['UnmatchedFaces']:
-            # print(i)
-            print('Los rostros comparados no son de la misma persona.')
-
-        # FaceMatches
+        
+        if respuesta["FaceMatches"] == None:
+            return False
+        
         for i in respuesta['FaceMatches']:
-            # FACE
-            # print('BoundingBoxWidth: ',i['Face']['BoundingBox']['Width'])
-            # print('BoundingBoxHeight: ',i['Face']['BoundingBox']['Height'])
-
-            # QUALITY
-            # print('QualityBrightness: ',i['Face']['Quality']['Brightness'])
-            # print('QualitySharpness: ',i['Face']['Quality']['Sharpness'])
+            similaridad = float(i['Similarity'])
+            confianza =  float(i['Face']['Confidence'])
+            
+            if similaridad > SIM_THRES or confianza > CON_THRES:
+                return True
             
             # SIMILARITY
-            print('Similarity: ', i['Similarity'])
+            # similarity = float(i['Similarity'])
             
             # CONFIDENCE
-            print('Confidence: ', i['Face']['Confidence'])
+            # print('Confidence: ', i['Face']['Confidence'])
             
             
 # CAPTURAR FOTOGRAFÍAS USANDO LA CÁMARA
@@ -94,26 +84,56 @@ def capturarFotos():
                 cv2.imwrite('Rostros encontrados/rostro_{}.jpg'.format(count),rostro)
                 cv2.imshow('rostro',rostro)
                 count = count +1
-        cv2.rectangle(frame,(10,5),(450,25),(255,255,255),-1)
-        cv2.putText(frame,'Presione s para almacenar los rostros encontrados y presione ESC para cerrar la cámara.',(10,20), 2, 0.5,(128,0,255),1,cv2.LINE_AA)
+        cv2.rectangle(frame,(10,5),(600,25),(255,255,255),-1)
+        cv2.putText(frame,'Presione S para almacenar los rostros encontrados y ESC para cerrar.',(10,20), 2, 0.5,(128,0,255),1,cv2.LINE_AA)
         cv2.imshow('frame',frame)
 
     cap.release()
     cv2.destroyAllWindows()
+    
 
 # COMPARAMOS LA PRIMERA FOTOGRAFÍA GUARDADA CON LAS IMÁGENES GUARDADAS EN LA BD
 
-if __name__ == "__main__":
+def actualizacionStatus():
     crearCarpetaFotos()
     capturarFotos()
     
     ruta_img1 = './Rostros encontrados/rostro_0.jpg'
-        
+    
+    isPerson = False
+    info_alumnos = []  # Esta lista guardará la información del alumno siempre y cuando se haya reconocido al padre
+    msg_notificacion = ''
+    
     for i in range(len(rutas)):
-        for j in range(1,3):
-            ruta_img2 = rutas[i][j]
-            
-            print('Comparado con: ' + rutas[i][0])
-            compararRostros(ruta_img1, ruta_img2)
-            
-            # print('\n')
+        
+        ruta_img2 = rutas[i][3]
+        Person = i
+        
+        isPerson = compararRostros(ruta_img1, ruta_img2)
+        
+        if isPerson:
+            break
+    
+    if isPerson:
+        msg_notificacion = 'Rostro reconocido correctamente, su(s) hijo(s) esta(n) en camino a la puerta de salida, por favor espere su llegada.'    
+        for h in range(len(rutas[Person][5])):
+            info_alumnos.append([rutas[Person][5][h], rutas[Person][6][h], rutas[Person][7][h], "Llegó padre"])  # Nombre hijo(s), Edad, Grupo
+    
+    else:
+        msg_notificacion = 'Su rostro no se está identificando correctamente, por favor coloquelo de nuevo en el recuadro cuidando que sus facciones se distingan con claridad (no lentes, no cubrebocas).'
+        info_alumnos.append('_')
+    
+    return msg_notificacion, info_alumnos
+
+if __name__ == "__main__":
+    
+    msg_notif, salidaAlumnos = actualizacionStatus()      # Lista de alumnos que tienen permitido salir
+    
+    if salidaAlumnos[0] == '_':
+        print(msg_notif)
+    
+    else:
+        print(msg_notif)
+        # Puede que un padre tenga varios hijos registrados, por eso sale una lista con los datos de cada uno
+        for i in range(len(salidaAlumnos)):
+            print("Alumno: ", salidaAlumnos[i][0], "\tEdad: ", salidaAlumnos[i][1], "\tGrupo: ", salidaAlumnos[i][2], "\tEstado: ", salidaAlumnos[i][3], "\n")
