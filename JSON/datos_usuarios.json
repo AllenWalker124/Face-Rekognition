@@ -6,9 +6,10 @@
         "tutor_3": "Jesus",
         "foto_1": "./Rostros Personas/Jesus_before.jpg",
         "foto_2": "./Rostros Personas/Jesus_after.jpg",
-        "hijos": ["Alvarado Aguilar Jesús Antonio"],
-        "edad_hijos": [5],
-        "grupos": ["5A"]
+        "foto_3": "./Rostros Personas/Jesus_after.jpg",
+        "hijos": ["Alvarado Aguilar Jesús Antonio", "Alvarado Aguilar Carlos Adrián"],
+        "edad_hijos": [5, 3],
+        "grupos": ["5A", "3B"]
       },
       {
         "tutor_1": "Miguel",
@@ -16,6 +17,7 @@
         "tutor_3": "Miguel",
         "foto_1": "./Rostros Personas/Miguel_before.jpg",
         "foto_2": "./Rostros Personas/Miguel_after.jpg",
+        "foto_3": "./Rostros Personas/Miguel_after.jpg",
         "hijos": ["Robles Rizo Miguel Jesed"],
         "edad_hijos": [4],
         "grupos": ["4B"]
@@ -26,6 +28,7 @@
         "tutor_3": "Karla",
         "foto_1": "./Rostros Personas/Karla_before.jpg",
         "foto_2": "./Rostros Personas/Karla_after.jpg",
+        "foto_3": "./Rostros Personas/Karla_after.jpg",
         "hijos": ["Estrada Crespo Karla Julieta"],
         "edad_hijos": [4],
         "grupos": ["4B"]
@@ -36,6 +39,7 @@
         "tutor_3": "Jared",
         "foto_1": "./Rostros Personas/Jared_before.jpg",
         "foto_2": "./Rostros Personas/Jared_after.jpg",
+        "foto_3": "./Rostros Personas/Jared_after.jpg",
         "hijos": ["Espinosa Cruz Emilio Jared"],
         "edad_hijos": [3],
         "grupos": ["3A"]
@@ -46,6 +50,7 @@
         "tutor_3": "Raul",
         "foto_1": "./Rostros Personas/Raul_before.jpg",
         "foto_2": "./Rostros Personas/Raul_after.jpg",
+        "foto_3": "./Rostros Personas/Raul_after.jpg",
         "hijos": ["Ayala Arroyo Raúl Eduardo"],
         "edad_hijos": [3],
         "grupos": ["3B"]

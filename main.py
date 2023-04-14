@@ -45,12 +45,6 @@ def compararRostros(ruta_imagen1,ruta_imagen2):
             if similaridad > SIM_THRES or confianza > CON_THRES:
                 return True
             
-            # SIMILARITY
-            # similarity = float(i['Similarity'])
-            
-            # CONFIDENCE
-            # print('Confidence: ', i['Face']['Confidence'])
-            
             
 # CAPTURAR FOTOGRAFÍAS USANDO LA CÁMARA
 def crearCarpetaFotos():
@@ -106,18 +100,22 @@ def actualizacionStatus():
     
     for i in range(len(rutas)):
         
-        ruta_img2 = rutas[i][3]
         Person = i
         
-        isPerson = compararRostros(ruta_img1, ruta_img2)
-        
+        for j in range(3,6):
+            ruta_img2 = rutas[i][j]
+            isPerson = compararRostros(ruta_img1, ruta_img2)
+            
+            if isPerson:
+                break
+                
         if isPerson:
             break
     
     if isPerson:
         msg_notificacion = 'Rostro reconocido correctamente, su(s) hijo(s) esta(n) en camino a la puerta de salida, por favor espere su llegada.'    
-        for h in range(len(rutas[Person][5])):
-            info_alumnos.append([rutas[Person][5][h], rutas[Person][6][h], rutas[Person][7][h], "Llegó padre"])  # Nombre hijo(s), Edad, Grupo
+        for h in range(len(rutas[Person][6])):
+            info_alumnos.append([rutas[Person][6][h], rutas[Person][7][h], rutas[Person][8][h], "Llegó padre"])  # Nombre hijo(s), Edad, Grupo
     
     else:
         msg_notificacion = 'Su rostro no se está identificando correctamente, por favor coloquelo de nuevo en el recuadro cuidando que sus facciones se distingan con claridad (no lentes, no cubrebocas).'
