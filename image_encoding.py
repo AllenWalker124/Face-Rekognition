@@ -1,7 +1,14 @@
 import base64
+import os
+
+def crearCarpetaFotosPersonas():
+    if not os.path.exists('Rostros Personas'):
+        print('Carpeta creada: Rostros Personas')
+        os.makedirs('Rostros Personas')
+
+crearCarpetaFotosPersonas()
 
 def codificar_b64(img_path):
-    # img_path = './Rostros Personas/Karla_before.jpg'
     image = open(img_path, 'rb')
     image_read = image.read()
     image_64_encode = base64.b64encode(image_read)
