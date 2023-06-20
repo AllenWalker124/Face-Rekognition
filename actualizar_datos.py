@@ -28,7 +28,7 @@ def get_images_path():
     for i in range(len(lista_nombre_padres)):
         image_encoding.decodificar_b64(lista_nombre_padres[i], lista_fotos_padres[i])
         image_encoding.decodificar_b64(lista_nombre_padres[i], lista_fotos_padres[i])
-        path = './Rostros Personas/' + lista_nombre_padres[i] + '.jpg'
+        path = './Rostros Padres/' + lista_nombre_padres[i] + '.jpg'
         images_path.append([lista_nombre_padres[i], path])
         # Nombre Padre, ruta foto de Padre
         
@@ -82,3 +82,14 @@ def actualizarBD(Recognized_Person):
     
     for i in range(len(lista_alumnos)):
         actualizarAsistencia_2(lista_alumnos[i][0], Recognized_Person, lista_alumnos[i][1])
+        
+def validarRegistroTutor(nombreTutor):
+    tutor = '"' + nombreTutor + '"'
+    commit = 'SELECT * FROM padres WHERE PadreNombre = ' + tutor
+    mycursor.execute(commit)
+    tutor_data = mycursor.fetchall()
+    
+    existe_registro = True
+    if tutor_data == []:
+        existe_registro = False
+    return existe_registro

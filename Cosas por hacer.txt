@@ -1,0 +1,16 @@
+Cosas por hacer:
+
+- Agregar el caso en el que no existe padre en la BD                                                                                -   Listo
+- Mandar a la BD lo de la busqueda por la interfaz                                                                                  -   Listo
+- Agregar buscador en la interfaz y con este poder buscar el nombre del padre directamente en la BD                                 -   Listo
+- Agregar pantalla & mensaje de que está cargando el análisis de la foto tomada                                                     -   Listo
+- Resetear los mensajes después de un tiempo (Esto sería prácticamente lo que hace el botón reiniciar, pero en automático)          -   Listo
+
+
+Orden de ejecución:
+
+- image_encoding.py
+- agregar_fotos.py
+- actualizar_datos.py
+- rekognition.py
+- main.py   (main_interfaz.py es la versión anterior, le faltan algunas correcciones)
